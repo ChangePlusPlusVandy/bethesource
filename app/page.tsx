@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>
-      <main>
+    <PageContainer>
+      <MainContainer>
         <ImageContainer>
           <LearningSourceBanner
             src="assets/learningSourceBannerHorizontal.png"
@@ -72,10 +72,22 @@ export default function Home() {
             </Tile>
           </Link>
         </NavigationTiles>
-      </main>
-    </div>
+      </MainContainer>
+    </PageContainer>
   );
 }
+
+const PageContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+`;
+
+const MainContainer = styled.main`
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  max-width: 1024px;
+`;
 
 const ImageContainer = styled.section`
   text-align: center;
