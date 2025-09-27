@@ -183,7 +183,6 @@ const ContentOverlay = styled.div`
 
 const Title = styled.h2`
   color: white;
-  font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: clamp(1.25rem, 1.8vw, 2rem);
   line-height: 1.2;
@@ -192,6 +191,7 @@ const Title = styled.h2`
 
 const LearnMoreButton = styled.button`
   background-color: black;
+  font-family: inherit;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
