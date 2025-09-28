@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "bunx prettier --write .",
+    "format:check": "bunx prettier --check .",
+    "check": "bun run lint && bun run format:check",
+    "fix": "bun run lint && bun run format"
   },
   "dependencies": {
     "next": "15.5.4",
