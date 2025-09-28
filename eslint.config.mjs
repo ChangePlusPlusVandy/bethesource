@@ -23,6 +23,7 @@ const eslintConfig = [
   {
     rules: {
       "@next/next/no-img-element": "off",
+      "id-length": ["error", { min: 2 }],
     },
   },
 ];
