@@ -22,5 +22,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "@eslint/eslintrc": "^3"
+    "eslint-config-prettier": "^10.1.8",
   }
 }
