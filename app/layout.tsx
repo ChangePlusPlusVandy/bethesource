@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Be The Source",
-  description: "Empowering foster families",
+  description: "Healing families impacted by foster care",
 };
 
 export default function RootLayout({
