@@ -25,7 +25,7 @@ The frontend will run on [http://localhost:3000](http://localhost:3000).
 
 > [!NOTE]
 > This repository uses `bun` as a package manager. All commands will use `bun` instead of `npm` or other equivalents.
-> If you do not want to use `bun` for any reason, you may use `npm`. The two have a pretty straightforward equivalency of commands, explained [here](https://bun.com/guides/install/from-npm-install-to-bun-install#run-package-json-scripts-faster).
+> If you have used `npm` before, `bun` is pretty easy to understand. The two have a pretty straightforward equivalency of commands, explained [here](https://bun.com/guides/install/from-npm-install-to-bun-install#run-package-json-scripts-faster).
 > Why `bun`? It's faster and causes less clutter in the terminal.
 
 Install for MacOS / Linux:
