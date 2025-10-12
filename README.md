@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Learning Management System (LMS) monorepo for [Be The Source](https://bethesourceco.org/), a Colorado based non-profit helping foster families.
 
 ## Getting Started
 
