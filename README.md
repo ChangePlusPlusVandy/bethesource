@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Learning Management System (LMS) monorepo for [Be The Source](https://bethesourceco.org/), a Colorado based non-profit helping foster families.
 
-## Getting Started
+# Getting Started
 
-First, run the development server:
+> [!IMPORTANT]
+> First time? See the [Prerequisites](#prerequisites) section below first.
+
+## 1. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
+```
+
+## 2. Run the development server
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The frontend will run on [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 1. Install `bun`
 
-## Learn More
+> [!NOTE]
+> This repository uses `bun` as a package manager. All commands will use `bun` instead of `npm` or other equivalents.
+> If you have used `npm` before, `bun` is pretty easy to understand. The two have a pretty straightforward equivalency of commands, explained [here](https://bun.com/guides/install/from-npm-install-to-bun-install#run-package-json-scripts-faster).
+> Why `bun`? It's faster and causes less clutter in the terminal.
 
-To learn more about Next.js, take a look at the following resources:
+Install for MacOS / Linux:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```zsh
+curl -fsSL https://bun.sh/install | bash
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Install for Windows:
 
-## Deploy on Vercel
+```bash
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 2. Clone the repository
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+In a terminal, go to a folder where you would like to store this repository (it can be whatever you like e.g. `/clubs` or `/changeplusplus`, just make sure you know where you put it so you can easily find it again). Then clone the repository with git:
+
+```bash
+# using SSH
+git clone git@github.com:ChangePlusPlusVandy/bethesource.git
+
+# OR using personal access token
+git clone https://github.com/ChangePlusPlusVandy/bethesource.git
+
+# DO NOT DOWNLOAD AS A ZIP FOLDER (reach out to rachel if you need help)
+```
+
+> [!NOTE]
+> Unfamiliar with Git commands? Here are some resources you might find helpful:
+> [Git Cheat Sheet](https://wizardzines.com/git-cheat-sheet.pdf) from WizardZines
+> [Oh My Git!](https://ohmygit.org/) - open source game about learning Git
+> reach out to Rachel if you need help! :)
+
+### 2.1 Cloning for the first time, permissions
+
+If you haven't worked with Git before, you will most likely have to set up EITHER a SSH key OR a personal access token (PAT) in order to clone the repository into your machine.
+
+You only need one, Rachel uses SSH because she couldn't get the PAT to work the first time she tried and she has stuck with it ever since.
+
+GitHub's documentation for both (choose one):
+
+- [SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [PATs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+## 3. Navigate into the cloned folder
+
+In your terminal, go back to the folder where you cloned this repository if you are not already there. Then, navigate into the `bethesource` directory:
+
+```bash
+cd bethesource
+```
+
+Stuck? Some helpful commands:
+
+- `pwd` prints your current location in your machine
+- `ls` lists the files/folders at your current location
+- [installation required] `z` jumps you to your recent locations (e.g. `z bethesource` will bring you to wherever you cloned the folder)
+  - [installation option 1](https://github.com/rupa/z): supports bash + zsh
+  - [installation option 2](https://github.com/agkozak/zsh-z): zsh only but faster
+
+## 4. Done! Now go to the [Getting Started](#getting-started) section above
