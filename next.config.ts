@@ -1,7 +1,13 @@
+import { codeInspectorPlugin } from "code-inspector-plugin";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    rules: codeInspectorPlugin({
+      bundler: "turbopack",
+      hotKeys: ["altKey"],
+    }),
+  },
 };
 
 export default nextConfig;
