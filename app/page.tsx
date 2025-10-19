@@ -1,6 +1,6 @@
 "use client";
-import styled from "styled-components";
 import Link from "next/link";
+import styled from "styled-components";
 
 export default function Home() {
   return (
@@ -113,7 +113,8 @@ const LearningSourceBanner = styled.img`
   width: 90%;
   max-width: 816px;
   height: auto;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-radius: 0.5rem;
 
@@ -134,7 +135,8 @@ const LearningSourceBanner = styled.img`
 const Tile = styled.div`
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   margin: 0 auto;
   width: 90%;
@@ -208,7 +210,8 @@ const LearnMoreButton = styled.button`
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: none;
   cursor: pointer;
@@ -238,7 +241,8 @@ const OrangeButton = styled.button`
   font-weight: 600;
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: none;
   cursor: pointer;
