@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import styled from "styled-components";
+import { Title } from "../components/library/Headers";
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
               />
               <OrangeOverlay />
               <ContentOverlay>
-                <Title>Getting Started</Title>
+                <Title text="Getting Started" textcolor="white" />
                 <LearnMoreButton>Learn More</LearnMoreButton>
               </ContentOverlay>
             </Tile>
@@ -38,7 +39,7 @@ export default function Home() {
               />
               <OrangeOverlay />
               <ContentOverlay>
-                <Title>Catalog</Title>
+                <Title text="Catalog" textcolor="white" />
               </ContentOverlay>
             </Tile>
           </Link>
@@ -51,7 +52,7 @@ export default function Home() {
               />
               <OrangeOverlay />
               <ContentOverlay>
-                <Title>In-person Training</Title>
+                <Title text="In-person Training" textcolor="white" />
               </ContentOverlay>
             </Tile>
           </Link>
@@ -68,7 +69,7 @@ export default function Home() {
                   <OrangeButton>Upcoming</OrangeButton>
                   <OrangeButton>On-Demand</OrangeButton>
                 </OrangeButtons>
-                <Title>Online Training</Title>
+                <Title text="Online Training" textcolor="white" />
               </ContentOverlay>
             </Tile>
           </Link>
@@ -194,14 +195,6 @@ const ContentOverlay = styled.div`
   text-align: center;
   padding: 1rem;
   padding-bottom: 1rem;
-`;
-
-const Title = styled.h2`
-  color: white;
-  font-weight: bold;
-  font-size: clamp(1.25rem, 1.8vw, 2rem);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
 `;
 
 const LearnMoreButton = styled.button`
