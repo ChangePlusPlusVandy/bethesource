@@ -22,5 +22,5 @@ type NavigationTileProps = {
 };
 
 export default function NavigationTile({ somePropsHere }: NavigationTileProps) {
-  return <>{/* TODO: implement */}</>;
+  return <>{/* TODO: implement */ somePropsHere}</>;
 }
