@@ -15,6 +15,7 @@ export default function Home() {
 
         {/* Navigation Tiles */}
         <NavigationTiles>
+          {/* TODO: abstract this out into a Navigation Tile component */}
           <Link href="/">
             <Tile>
               <BackgroundImage
