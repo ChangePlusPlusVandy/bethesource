@@ -25,7 +25,9 @@ The frontend will run on [http://localhost:3000](http://localhost:3000).
 
 > [!NOTE]
 > This repository uses `bun` as a package manager. All commands will use `bun` instead of `npm` or other equivalents.
+>
 > If you have used `npm` before, `bun` is pretty easy to understand. The two have a pretty straightforward equivalency of commands, explained [here](https://bun.com/guides/install/from-npm-install-to-bun-install#run-package-json-scripts-faster).
+>
 > Why `bun`? It's faster and causes less clutter in the terminal.
 
 Install for MacOS / Linux:
@@ -56,9 +58,12 @@ git clone https://github.com/ChangePlusPlusVandy/bethesource.git
 
 > [!NOTE]
 > Unfamiliar with Git commands? Here are some resources you might find helpful:
+>
 > [Git Cheat Sheet](https://wizardzines.com/git-cheat-sheet.pdf) from WizardZines
+>
 > [Oh My Git!](https://ohmygit.org/) - open source game about learning Git
-> reach out to Rachel if you need help! :)
+>
+> Reach out to Rachel if you need help! :)
 
 ### 2.1 Cloning for the first time, permissions
 
