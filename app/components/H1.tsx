@@ -24,7 +24,7 @@ type H1Props = {
 };
 
 // TODO: implement H1 component
-export default function H1({ text, textcolor }: H1Props) {
+export default function H1({}: H1Props) {
   return <StyledH1 />;
 }
 
