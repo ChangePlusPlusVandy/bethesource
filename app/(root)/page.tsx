@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import styled from "styled-components";
-import { Title } from "../components/library/Headers";
+import H1 from "../components/H1";
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
               />
               <OrangeOverlay />
               <ContentOverlay>
-                <Title text="Getting Started" textcolor="white" />
+                <H1 text="Getting Started" textcolor="white" />
                 <LearnMoreButton>Learn More</LearnMoreButton>
               </ContentOverlay>
             </Tile>
@@ -39,7 +39,7 @@ export default function Home() {
               />
               <OrangeOverlay />
               <ContentOverlay>
-                <Title text="Catalog" textcolor="white" />
+                <H1 text="Catalog" textcolor="white" />
               </ContentOverlay>
             </Tile>
           </Link>
@@ -52,7 +52,7 @@ export default function Home() {
               />
               <OrangeOverlay />
               <ContentOverlay>
-                <Title text="In-person Training" textcolor="white" />
+                <H1 text="In-person Training" textcolor="white" />
               </ContentOverlay>
             </Tile>
           </Link>
@@ -69,7 +69,7 @@ export default function Home() {
                   <OrangeButton>Upcoming</OrangeButton>
                   <OrangeButton>On-Demand</OrangeButton>
                 </OrangeButtons>
-                <Title text="Online Training" textcolor="white" />
+                <H1 text="Online Training" textcolor="white" />
               </ContentOverlay>
             </Tile>
           </Link>
