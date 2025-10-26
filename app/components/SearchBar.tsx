@@ -13,7 +13,12 @@ export default function SearchBar({}: SearchBarProps) {
   return (
     <StyledSearchBar>
       <TextInput propName="search" />
-      <Button propName="search" />
+      <Button
+        label="search"
+        onClick={() => {
+          console.log("search");
+        }}
+      />
     </StyledSearchBar>
   );
 }
