@@ -125,7 +125,6 @@
 .fullStarParent:focus-visible {
   background: var(--light-gray);
 }
-/* Selected */
 .fullStarParentSelected {
   width: 100%;
   position: relative;
@@ -168,7 +167,6 @@
   justify-content: flex-start;
 }
 
-/* Label */
 .placeholderText {
   flex: 1 0 0;
   position: relative;
