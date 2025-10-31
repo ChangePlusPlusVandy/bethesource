@@ -1,8 +1,14 @@
-import { useState } from "react";
+"use client";
+
+import styles from "@/app/styles/components/Dropdown.module.css";
+import DropDownArrow from "@/public/assets/icons/DropDownArrow.svg";
+import FullStar from "@/public/assets/icons/FullStar.svg";
+import { useEffect, useRef, useState } from "react";
 
 type MenuItem = {
   label: string;
   onClick?: () => void;
+  selected?: boolean;
 };
 
 type DropdownProps = {
@@ -10,73 +16,178 @@ type DropdownProps = {
   menuItems: MenuItem[];
 };
 
+const isAssetModule = (value: unknown): value is { src: string } => {
+  if (typeof value !== "object" || value === null) return false;
+  if (!("src" in value)) return false;
+  const maybe = (value as { src: unknown }).src;
+  return typeof maybe === "string";
+};
+
+const renderIcon = (Icon: unknown, className?: string) => {
+  if (!Icon) return null;
+
+  if (typeof Icon === "string") {
+    return <img src={Icon} className={className} alt="" aria-hidden="true" />;
+  }
+
+  if (isAssetModule(Icon)) {
+    const src = Icon.src;
+    return <img src={src} className={className} alt="" aria-hidden="true" />;
+  }
+
+  const Comp = Icon as React.ComponentType<Record<string, unknown>>;
+  return <Comp className={className} aria-hidden="true" />;
+};
+
 export default function Dropdown({ buttonLabel, menuItems }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const toggleMenu = () => {
-    setIsOpen((prev) => !prev);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
+
+  // Close on Escape
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const focusItem = (index: number) => {
+    const el = itemsRef.current[index];
+    el?.focus();
   };
 
-  const closeMenu = () => {
-    setIsOpen(false);
+  const moveFocus = (direction: 1 | -1) => {
+    const list = itemsRef.current;
+    const currentIndex = list.findIndex((el) => el === document.activeElement);
+    const len = menuItems.length;
+    const nextIndex =
+      currentIndex === -1
+        ? direction === 1
+          ? 0
+          : len - 1
+        : (currentIndex + direction + len) % len;
+    focusItem(nextIndex);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      const selectedIndex = menuItems.findIndex((item) => item.selected);
+      const indexToFocus = selectedIndex >= 0 ? selectedIndex : 0;
+      const id = window.setTimeout(() => focusItem(indexToFocus), 0);
+      return () => window.clearTimeout(id);
+    }
+  }, [isOpen, menuItems]);
+
+  const menuId = "dropdown-menu";
 
   return (
-    <div className="relative inline-block text-left">
-      <div>
+    <div
+      ref={containerRef}
+      className={styles.container}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node))
+          closeMenu();
+      }}
+    >
+      {/* Header: label text + arrow-only toggle button */}
+      <div className={styles.button} role="group" aria-label="Dropdown">
+        <span>{buttonLabel}</span>
         <button
           type="button"
-          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           id="menu-button"
           aria-expanded={isOpen}
           aria-haspopup="true"
+          aria-controls={menuId}
           onClick={toggleMenu}
+          className={styles.arrowButton}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+              event.preventDefault();
+              setIsOpen(true);
+            }
+          }}
         >
-          {buttonLabel}
-          <svg
-            className="-mr-1 size-5 text-gray-400"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-              clipRule="evenodd"
-            />
-          </svg>
+          {/* Arrow icon (rotates on open) */}
+          {renderIcon(
+            DropDownArrow,
+            `${styles.dropArrowDownIcon} ${isOpen ? styles.dropArrowOpen : ""}`,
+          )}
         </button>
       </div>
 
-      {isOpen && (
-        <div
-          className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-          tabIndex={-1}
-        >
-          <div className="py-1" role="none">
-            {menuItems.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  className="block w-full px-4 py-2 text-left text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex={-1}
-                  onClick={() => {
-                    item.onClick?.();
-                    closeMenu();
-                  }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
+      {/* Menu panel */}
+      <div
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        id={menuId}
+        tabIndex={-1}
+        className={`${styles.menu} ${isOpen ? styles.menuOpen : ""}`}
+        hidden={!isOpen}
+        onKeyDown={(event) => {
+          switch (event.key) {
+            case "ArrowDown":
+              event.preventDefault();
+              moveFocus(1);
+              break;
+            case "ArrowUp":
+              event.preventDefault();
+              moveFocus(-1);
+              break;
+            case "Home":
+              event.preventDefault();
+              focusItem(0);
+              break;
+            case "End":
+              event.preventDefault();
+              focusItem(menuItems.length - 1);
+              break;
+            case "Enter":
+            case " ":
+              // Let the focused button handle click via default behavior
+              break;
+            default:
+              break;
+          }
+        }}
+      >
+        <div className={styles.frameParent} role="none">
+          {menuItems.map((item, index) => {
+            const rowClass = item.selected
+              ? styles.fullStarParentSelected
+              : styles.fullStarParent;
+            return (
+              <button
+                key={index}
+                type="button"
+                role="menuitem"
+                tabIndex={0}
+                className={rowClass}
+                ref={(el) => {
+                  itemsRef.current[index] = el;
+                }}
+                onClick={() => {
+                  item.onClick?.();
+                  closeMenu();
+                }}
+              >
+                {/* Left icon */}
+                {renderIcon(FullStar, styles.fullStarIcon)}
+
+                {/* Text */}
+                <div className={styles.placeholderTextWrapper}>
+                  <div className={styles.placeholderText}>{item.label}</div>
+                </div>
+              </button>
+            );
+          })}
         </div>
-      )}
+      </div>
     </div>
   );
 }
