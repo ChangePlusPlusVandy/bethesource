@@ -1,17 +1,40 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for TextInput
 type TextInputProps = {
-  propName: string; // replace string with actual prop type
+  propName: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  type?: string;
+  disabled?: boolean;
+  label?: string;
 };
 
-// TODO: implement TextInput component
-export default function TextInput({}: TextInputProps) {
+export default function TextInput({
+  propName,
+  value,
+  onChange,
+  onKeyPress,
+  placeholder,
+  type = "text",
+  disabled = false,
+  label,
+}: TextInputProps) {
   return (
     <div>
       <StyledInputLabel>
-        <StyledTextInput />
+        {label && <span>{label}</span>}
+        <StyledTextInput
+          name={propName}
+          value={value}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          placeholder={placeholder}
+          type={type}
+          disabled={disabled}
+        />
       </StyledInputLabel>
     </div>
   );
