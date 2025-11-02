@@ -25,13 +25,13 @@ export default function NumberInput({
   );
   const [cur, setCur] = useState<string | null>(null);
 
-  const format = (s: string) => s.replace(/^(-?)0+(?=\d)/, "$1");
+  const format = (value: string) => value.replace(/^(-?)0+(?=\d)/, "$1");
 
   // current existing value in input field
   const base = () => {
     if (cur === null || cur === "") return val;
-    let n = Number(format(cur));
-    return !Number.isNaN(n) ? n : val;
+    const num = Number(format(cur));
+    return !Number.isNaN(num) ? num : val;
   };
 
   // update value
@@ -72,9 +72,9 @@ export default function NumberInput({
     }
     if (event.key == "Enter") {
       event.preventDefault();
-      let n = Number(format(cur ?? String(val)));
+      const num = Number(format(cur ?? String(val)));
 
-      if (!Number.isNaN(n)) commit(n);
+      if (!Number.isNaN(num)) commit(num);
       setCur(null);
       event.currentTarget.blur();
       return;
@@ -101,7 +101,7 @@ export default function NumberInput({
       setCur(null);
       return;
     }
-    let update = Number(format(cur));
+    const update = Number(format(cur));
     if (!Number.isNaN(update)) commit(update);
 
     setCur(null);
