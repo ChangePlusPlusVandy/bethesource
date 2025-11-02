@@ -2,28 +2,26 @@
 import styled from "styled-components";
 
 type ToggleProps = {
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
+  value: boolean;
+  setValue: (value: boolean) => void;
   label?: string;
   disabled?: boolean;
 };
 
 export default function Toggle({
-  checked = false,
-  onChange,
+  value,
+  setValue,
   label,
   disabled = false,
 }: ToggleProps) {
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(ev.target.checked);
-    }
+    setValue(ev.target.checked);
   };
 
   return (
     <ToggleWrapper>
       <StyledToggle
-        checked={checked}
+        checked={value}
         onChange={handleChange}
         disabled={disabled}
       />
