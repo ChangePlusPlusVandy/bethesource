@@ -1,26 +1,47 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for TextInput
 type TextInputProps = {
-  propName: string; // replace string with actual prop type
+  label?: string;
+  placeholder?: string;
 };
 
-// TODO: implement TextInput component
-export default function TextInput({}: TextInputProps) {
+export default function TextInput({ label, placeholder }: TextInputProps) {
   return (
-    <div>
-      <StyledInputLabel>
-        <StyledTextInput />
-      </StyledInputLabel>
-    </div>
+    <StyledInputContainer>
+      {label && <StyledInputLabel>{label}</StyledInputLabel>}
+      <StyledTextInput type="text" placeholder={placeholder} />
+    </StyledInputContainer>
   );
 }
 
-const StyledTextInput = styled.input`
-  /* TODO: Add styles for TextInput */
+const StyledInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
 `;
 
 const StyledInputLabel = styled.label`
-  /* TODO: Add styles for InputLabel */
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 8px;
+`;
+
+const StyledTextInput = styled.input`
+  padding: 12px 16px;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 2px solid var(--dark-gray);
+  background: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  color: var(--black);
+  outline: none;
+
+  &::placeholder {
+    color: var(--dark-gray);
+  }
 `;
