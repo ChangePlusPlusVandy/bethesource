@@ -1,16 +1,16 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for TextMedium
 type TextMediumProps = {
-  propName: string; // replace with actual prop
+  text: string;
 };
 
-// TODO: implement TextMedium component
-export default function TextMedium({}: TextMediumProps) {
-  return <StyledTextMedium />;
+export default function TextMedium({ text }: TextMediumProps) {
+  return <StyledTextMedium>{text}</StyledTextMedium>;
 }
 
 const StyledTextMedium = styled.p`
-  /* TODO: Add styles for TextMedium */
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
 `;

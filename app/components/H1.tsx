@@ -1,7 +1,6 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: fix compatability with color/design scheme
 type TextColorType =
   | "white"
   | "black"
@@ -23,11 +22,10 @@ type H1Props = {
   textcolor: TextColorType;
 };
 
-// TODO: implement H1 component
-export default function H1({}: H1Props) {
-  return <StyledH1 />;
+export default function H1({ text, textcolor }: H1Props) {
+  return <StyledH1 textcolor={textcolor}>{text}</StyledH1>;
 }
 
-const StyledH1 = styled.h1`
-  /* TODO: Add styles for H1 */
+const StyledH1 = styled.h1<{ textcolor: TextColorType }>`
+  ${({ textcolor }) => textcolor};
 `;

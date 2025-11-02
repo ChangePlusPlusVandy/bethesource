@@ -1,16 +1,16 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for H3
 type H3Props = {
-  propName: string; // replace string with actual prop type
+  text: string;
 };
 
-// TODO: implement H3 component
-export default function H3({}: H3Props) {
-  return <StyledH3 />;
+export default function H3({ text }: H3Props) {
+  return <StyledH3>{text}</StyledH3>;
 }
 
 const StyledH3 = styled.h3`
-  /* TODO: Add styles for H3 */
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
 `;

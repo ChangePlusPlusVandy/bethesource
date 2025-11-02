@@ -1,16 +1,16 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for TextRegular
 type TextRegularProps = {
-  propName: string; // replace with actual prop
+  text: string;
 };
 
-// TODO: implement TextRegular component
-export default function TextRegular({}: TextRegularProps) {
-  return <StyledTextRegular />;
+export default function TextRegular({ text }: TextRegularProps) {
+  return <StyledTextRegular>{text}</StyledTextRegular>;
 }
 
 const StyledTextRegular = styled.p`
-  /* TODO: Add styles for TextRegular */
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
 `;
