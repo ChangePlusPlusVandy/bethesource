@@ -17,9 +17,9 @@ export default function Checkbox({
   disabled = false,
   className,
 }: CheckboxProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
-      onChange(e.target.checked);
+      onChange(ev.target.checked);
     }
   };
 
