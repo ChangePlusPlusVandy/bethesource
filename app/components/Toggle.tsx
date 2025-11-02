@@ -14,9 +14,9 @@ export default function Toggle({
   label,
   disabled = false,
 }: ToggleProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
-      onChange(e.target.checked);
+      onChange(ev.target.checked);
     }
   };
 
