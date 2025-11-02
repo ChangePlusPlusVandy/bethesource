@@ -1,16 +1,35 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for Chip
+// Props for Chip
 type ChipProps = {
-  propName: string; // replace string with actual prop type
+  label: string; // Text
+  onClick?: () => void; //Click handler for the chip (optional)
+  onRemove?: () => void; // Remove action (optional)
 };
 
-// TODO: implement Chip component
-export default function Chip({}: ChipProps) {
-  return <StyledChip />;
+// Chip component
+export default function Chip({ label, onClick }: ChipProps) {
+  return <StyledChip onClick={onClick}>{label}</StyledChip>;
 }
 
+// Styled chip container
 const StyledChip = styled.div`
-  /* TODO: Add styles for Chip */
+  display: inline-flex; /* Inline flex container */
+  padding: var(--Scaling-3XS, 2px) var(--Scaling-XS, 8px); /* Inside spacing */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  gap: var(--Scaling-3XS, 2px); /* Space between items */
+
+  border-radius: 100px;
+  background: var(--light-orange);
+
+  color: var(--black);
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 160% */
+
+  cursor: pointer;
 `;
