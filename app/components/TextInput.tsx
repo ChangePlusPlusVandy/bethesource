@@ -20,28 +20,38 @@ const StyledInputContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
+  gap: 4px;
 `;
 
 const StyledInputLabel = styled.label`
   font-family: Inter, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 16px;
   color: var(--black);
-  margin-bottom: 8px;
 `;
 
 const StyledTextInput = styled.input`
-  padding: 12px 16px;
+  display: flex;
+  padding: 8px;
+  align-items: center;
   align-self: stretch;
+  flex: 1 0 0;
   border-radius: 4px;
   border: 2px solid var(--dark-gray);
   background: #fff;
   font-family: Inter, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
   color: var(--black);
   outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &::placeholder {
-    color: var(--dark-gray);
+    color: var(--gray);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
