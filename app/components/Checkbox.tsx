@@ -1,96 +1,16 @@
 "use client";
-import Image from "next/image";
 import styled from "styled-components";
 
+// TODO: Add props for Checkbox
 type CheckboxProps = {
-  label?: string;
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
-  disabled?: boolean;
-  className?: string;
+  propName: string; // replace string with actual prop type
 };
 
-export default function Checkbox({
-  label = "Text",
-  checked = false,
-  onChange,
-  disabled = false,
-  className,
-}: CheckboxProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(e.target.checked);
-    }
-  };
-
-  return (
-    <CheckboxContainer className={className}>
-      <HiddenCheckbox
-        checked={checked}
-        onChange={handleChange}
-        disabled={disabled}
-      />
-      <StyledCheckbox checked={checked}>
-        {checked && (
-          <Image
-            src="/assets/icons/check.svg"
-            alt="checked"
-            width={16}
-            height={16}
-          />
-        )}
-      </StyledCheckbox>
-      <Label>{label}</Label>
-    </CheckboxContainer>
-  );
+// TODO: implement Checkbox component
+export default function Checkbox({}: CheckboxProps) {
+  return <StyledCheckbox />;
 }
 
-const CheckboxContainer = styled.label`
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  user-select: none;
-  opacity: 1;
-`;
-
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-`;
-
-const StyledCheckbox = styled.div<{ checked: boolean }>`
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  padding: 2px;
-
-  /* Unchecked - Initial state */
-  background-color: ${(props) =>
-    props.checked ? "var(--orange)" : "var(--white)"};
-  border: 1px solid
-    ${(props) => (props.checked ? "var(--orange)" : "var(--gray)")};
-
-  /* Hover state */
-  ${CheckboxContainer}:hover & {
-    background-color: ${(props) =>
-      props.checked ? "var(--light-orange)" : "var(--light-gray)"};
-    border-color: ${(props) =>
-      props.checked ? "var(--light-orange)" : "var(--gray)"};
-  }
-`;
-
-const Label = styled.span`
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--black);
+const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
+  /* TODO: Add styles for Checkbox */
 `;
