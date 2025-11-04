@@ -19,7 +19,7 @@ export default function SidebarItem({
 }: SidebarItemProps) {
   const content = (
     <StyledSidebarItem active={active} onClick={onClick}>
-      {icon}
+      <IconWrapper>{icon}</IconWrapper>
       <Label>{label}</Label>
     </StyledSidebarItem>
   );
@@ -33,10 +33,28 @@ export default function SidebarItem({
   return content;
 }
 
+const IconWrapper = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--Scaling-2XL, 32px);
+  height: var(--Scaling-2XL, 32px);
+  flex-shrink: 0;
+
+  /* Scale SVG icons to fill the container */
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 const Label = styled.span`
+  /* Layout */
+  flex: 1 0 0;
+
   /* text */
   font-family: Inter;
-  font-size: 16px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 32px; /* 133.333% */

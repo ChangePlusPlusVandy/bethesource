@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import styled from "styled-components";
 
 type ButtonVariant = "primary" | "outline" | "ghost";
@@ -8,8 +9,9 @@ type ButtonProps = {
   icon2?: React.ReactNode;
   variant?: ButtonVariant;
   label: string;
+  href?: string;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export default function Button({
@@ -17,36 +19,24 @@ export default function Button({
   icon2,
   variant = "primary",
   label,
+  href,
   disabled = false,
   onClick,
 }: ButtonProps) {
-  return (
+  const button = (
     <StyledButton variant={variant} disabled={disabled} onClick={onClick}>
       {icon1 && <IconWrapper>{icon1}</IconWrapper>}
       <Label>{label}</Label>
       {icon2 && <IconWrapper>{icon2}</IconWrapper>}
     </StyledButton>
   );
+
+  if (href && !disabled) {
+    return <Link href={href}>{button}</Link>;
+  }
+
+  return button;
 }
-
-const IconWrapper = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--Scaling-L, 20px);
-  height: 20px;
-  aspect-ratio: 1/1;
-  flex-shrink: 0;
-`;
-
-const Label = styled.span`
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
-  text-align: center;
-`;
 
 const buttonVariants = {
   primary: {
@@ -81,11 +71,36 @@ const buttonVariants = {
   },
 };
 
+const IconWrapper = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--Scaling-L, 20px);
+  height: 20px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+
+  /* Scale SVG icons to fill the container */
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const Label = styled.span`
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  text-align: center;
+`;
+
 const StyledButton = styled.button<{
   variant?: ButtonVariant;
   disabled: boolean;
 }>`
-  // button layout
+  /* button layout */
   display: inline-flex;
   padding: var(--Scaling-XS, 8px) var(--Scaling-M, 16px);
   justify-content: center;
@@ -97,37 +112,28 @@ const StyledButton = styled.button<{
   transition: all 0.2s ease;
 
   ${({ variant = "primary", disabled = false }) => {
-    const v = buttonVariants[variant];
-
-    var styles = "";
-
-    if (!disabled) {
-      styles = `
-      background-color: ${v.background};
-      color: ${v.color};
-      border-color: ${v.border};
-
-      &:hover:not(:disabled) {
-        background-color: ${v.hoverBG};
-      }
-
-      &:active:not(:disabled) {
-        background-color: ${v.pressedBG};
-      }
-      `;
-    } else {
-      styles = `
-      &:disabled {
-        background-color: ${v.disabledBG};
-        color: ${v.disabledColor};
-        border-color: ${v.disabledBorder};
-        cursor: not-allowed;
-      }
-      `;
-    }
+    const varType = buttonVariants[variant];
 
     return `
-      ${styles}
+      background-color: ${disabled ? varType.disabledBG : varType.background};
+      color: ${disabled ? varType.disabledColor : varType.color};
+      border-color: ${disabled ? varType.disabledBorder : varType.border};
+
+      ${
+        disabled
+          ? `
+        cursor: not-allowed;
+      `
+          : `
+        &:hover {
+          background-color: ${varType.hoverBG};
+        }
+
+        &:active {
+          background-color: ${varType.pressedBG};
+        }
+      `
+      }
     `;
   }}
 `;
