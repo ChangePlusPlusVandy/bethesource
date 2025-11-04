@@ -18,7 +18,7 @@ export default function SidebarItem({
   onClick,
 }: SidebarItemProps) {
   const content = (
-    <StyledSidebarItem active={active} onClick={onClick}>
+    <StyledSidebarItem $active={active} onClick={onClick}>
       <IconWrapper>{icon}</IconWrapper>
       <Label>{label}</Label>
     </StyledSidebarItem>
@@ -60,7 +60,7 @@ const Label = styled.span`
   line-height: 32px; /* 133.333% */
 `;
 
-const StyledSidebarItem = styled.div<{ active: boolean }>`
+const StyledSidebarItem = styled.div<{ $active: boolean }>`
   /* layout */
   display: flex;
   padding: var(--Scaling-XS, 8px) var(--Scaling-XL, 24px);
@@ -71,19 +71,19 @@ const StyledSidebarItem = styled.div<{ active: boolean }>`
 
   /* style */
   border-radius: var(--Scaling-XS, 8px);
-  background: ${({ active }) =>
-    active ? "rgba(247, 149, 24, 0.20)" : "transparent"};
+  background: ${({ $active }) =>
+    $active ? "rgba(247, 149, 24, 0.20)" : "transparent"};
   transition: background 0.2s ease;
 
   /* hover state */
   &:hover {
-    background: ${({ active }) =>
-      active ? "rgba(247, 149, 24, 0.25)" : "rgba(82, 82, 82, 0.10)"};
+    background: ${({ $active }) =>
+      $active ? "rgba(247, 149, 24, 0.25)" : "rgba(82, 82, 82, 0.10)"};
   }
 
   /* active/pressed state */
   &:active {
-    background: ${({ active }) =>
-      active ? "rgba(247, 149, 24, 0.35)" : "rgba(82, 82, 82, 0.20)"};
+    background: ${({ $active }) =>
+      $active ? "rgba(247, 149, 24, 0.35)" : "rgba(82, 82, 82, 0.20)"};
   }
 `;
