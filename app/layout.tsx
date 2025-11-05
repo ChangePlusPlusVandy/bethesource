@@ -25,6 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+        />
+      </head>
       <body className={`${poppins.variable} ${geistMono.variable}`}>
         {children}
       </body>

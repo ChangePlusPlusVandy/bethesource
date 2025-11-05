@@ -1,16 +1,18 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for Subtitle
 type SubtitleProps = {
-  variant: string; // replace string with the actual variant option(s), e.g. "bold"
+  text: string;
+  bold?: boolean;
 };
 
-// TODO: implement Subtitle component
-export default function Subtitle({}: SubtitleProps) {
-  return <StyledSubtitle />;
+export default function Subtitle({ text, bold = false }: SubtitleProps) {
+  return <StyledSubtitle bold={bold}>{text}</StyledSubtitle>;
 }
 
-const StyledSubtitle = styled.p`
-  /* TODO: Add styles for Subtitle */
+const StyledSubtitle = styled.p<{ bold: boolean }>`
+  font-size: 12px;
+  line-height: 16px;
+
+  font-weight: ${({ bold }) => (bold ? "600" : "400")};
 `;

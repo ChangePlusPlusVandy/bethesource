@@ -1,16 +1,16 @@
 "use client";
 import styled from "styled-components";
 
-// TODO: Add props for H2
 type H2Props = {
-  propName: string; // replace string with actual prop type
+  text: string;
 };
 
-// TODO: implement H2 component
-export default function H2({}: H2Props) {
-  return <StyledH2 />;
+export default function H2({ text }: H2Props) {
+  return <StyledH2>{text}</StyledH2>;
 }
 
 const StyledH2 = styled.h2`
-  /* TODO: Add styles for H2 */
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600; /* Semibold */
 `;
