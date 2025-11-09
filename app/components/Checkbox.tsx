@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import styled from "styled-components";
 
 type CheckboxProps = {
@@ -31,14 +30,7 @@ export default function Checkbox({
         disabled={disabled}
       />
       <StyledCheckbox checked={checked}>
-        {checked && (
-          <Image
-            src="/assets/icons/check.svg"
-            alt="checked"
-            width={16}
-            height={16}
-          />
-        )}
+        {checked && <MaterialIcon>check</MaterialIcon>}
       </StyledCheckbox>
       <Label>{label}</Label>
     </CheckboxContainer>
@@ -93,4 +85,13 @@ const Label = styled.span`
   font-size: 14px;
   line-height: 1.5;
   color: var(--black);
+`;
+
+const MaterialIcon = styled.span`
+  font-family: "Material Symbols Outlined";
+  font-size: 16px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
