@@ -202,7 +202,7 @@ const arrowRotate = css<{ $open: boolean }>`
 `;
 
 const ArrowIcon = styled.span<{ $open: boolean }>`
-  font-family: "Material Symbols Outlined";
+  font-family: "Material Symbols Rounded";
   font-size: 20px;
   line-height: 1;
   height: 20px;
@@ -282,7 +282,7 @@ const ItemButton = styled.button<{ $selected?: boolean }>`
 `;
 
 const StarIcon = styled.span`
-  font-family: "Material Symbols Outlined";
+  font-family: "Material Symbols Rounded";
   font-size: 16px;
   line-height: 1;
   width: 16px;
