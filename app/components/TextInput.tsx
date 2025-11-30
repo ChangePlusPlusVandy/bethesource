@@ -1,11 +1,12 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
 type TextInputProps = {
   label?: string;
   placeholder?: string;
   value?: string;
-  setValue?: (value: string) => void;
+  setValue?: Dispatch<SetStateAction<string>>;
 };
 
 export default function TextInput({
