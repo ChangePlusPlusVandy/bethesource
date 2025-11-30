@@ -4,13 +4,31 @@ import styled from "styled-components";
 type TextInputProps = {
   label?: string;
   placeholder?: string;
+  value?: string;
+  setValue?: (value: string) => void;
 };
 
-export default function TextInput({ label, placeholder }: TextInputProps) {
+export default function TextInput({
+  label,
+  placeholder,
+  value,
+  setValue,
+}: TextInputProps) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (setValue) {
+      setValue(event.target.value);
+    }
+  };
+
   return (
     <StyledInputContainer>
       {label && <StyledInputLabel>{label}</StyledInputLabel>}
-      <StyledTextInput type="text" placeholder={placeholder} />
+      <StyledTextInput
+        type="text"
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+      />
     </StyledInputContainer>
   );
 }
