@@ -1,5 +1,4 @@
 "use client";
-import { Search } from "lucide-react";
 import styled from "styled-components";
 
 type SearchBarProps = {
@@ -17,7 +16,7 @@ export default function SearchBar({ placeholder = "Search" }: SearchBarProps) {
           console.log("search");
         }}
       >
-        <Search size={20} />
+        <span className="material-symbols-rounded">search</span>
       </SearchButton>
     </StyledSearchBar>
   );
