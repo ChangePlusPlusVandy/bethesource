@@ -30,7 +30,7 @@ export default function Checkbox({
         disabled={disabled}
       />
       <StyledCheckbox checked={checked}>
-        {checked && <MaterialIcon>check</MaterialIcon>}
+        <MaterialIcon checked={checked}>check</MaterialIcon>
       </StyledCheckbox>
       <Label>{label}</Label>
     </CheckboxContainer>
@@ -87,11 +87,12 @@ const Label = styled.span`
   color: var(--black);
 `;
 
-const MaterialIcon = styled.span`
-  font-family: "Material Symbols Outlined";
+const MaterialIcon = styled.span<{ checked: boolean }>`
+  font-family: "Material Symbols Rounded";
   font-size: 16px;
   line-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: ${(props) => (props.checked ? 1 : 0)};
 `;
