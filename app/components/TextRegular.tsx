@@ -1,16 +1,24 @@
 "use client";
 import styled from "styled-components";
+import { ColorType } from "../types/colors";
 
-// TODO: Add props for TextRegular
 type TextRegularProps = {
-  propName: string; // replace with actual prop
+  text: string;
+  color?: ColorType;
 };
 
-// TODO: implement TextRegular component
-export default function TextRegular({}: TextRegularProps) {
-  return <StyledTextRegular />;
+export default function TextRegular({
+  text,
+  color = "black",
+}: TextRegularProps) {
+  return <StyledTextRegular $color={color}>{text}</StyledTextRegular>;
 }
 
-const StyledTextRegular = styled.p`
-  /* TODO: Add styles for TextRegular */
+const StyledTextRegular = styled.p<{ $color: ColorType }>`
+  color: var(--${({ $color }) => $color});
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 142.857% */
 `;
