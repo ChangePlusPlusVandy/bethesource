@@ -1,16 +1,21 @@
 "use client";
 import styled from "styled-components";
+import { ColorType } from "../types/colors";
 
-// TODO: Add props for TextMedium
 type TextMediumProps = {
-  propName: string; // replace with actual prop
+  text: string;
+  color?: ColorType;
 };
 
-// TODO: implement TextMedium component
-export default function TextMedium({}: TextMediumProps) {
-  return <StyledTextMedium />;
+export default function TextMedium({ text, color = "black" }: TextMediumProps) {
+  return <StyledTextMedium $color={color}>{text}</StyledTextMedium>;
 }
 
-const StyledTextMedium = styled.p`
-  /* TODO: Add styles for TextMedium */
+const StyledTextMedium = styled.p<{ $color: ColorType }>`
+  color: var(--${({ $color }) => $color});
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 150% */
 `;
